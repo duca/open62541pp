@@ -20,8 +20,9 @@ Client::Client()
 }
 
 Client::~Client() {
-    if (d_->client)
+    if (d_->client != nullptr) {
         UA_Client_delete(d_->client);
+    }
 }
 
 std::vector<std::pair<std::string, std::string>> Client::findServers(std::string_view url) {
@@ -30,8 +31,9 @@ std::vector<std::pair<std::string, std::string>> Client::findServers(std::string
 
     if (detail::isBadStatus(UA_Client_findServers(
             d_->client, url.data(), 0, nullptr, 0, nullptr, &nServers, &registeredServers
-        )))
+        ))) {
         return {};
+    }
 
     std::vector<std::pair<std::string, std::string>> res;
 

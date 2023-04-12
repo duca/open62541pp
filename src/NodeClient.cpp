@@ -7,7 +7,6 @@
 using namespace opcua::detail;
 
 #include "open62541/client_highlevel.h"
-#include "open62541_impl.h"
 
 namespace opcua {
 NodeClient::NodeClient(std::shared_ptr<Client> client, const NodeId& id)  // NOLINT
@@ -150,7 +149,6 @@ std::vector<uint32_t> NodeClient::getArrayDimensions() {
     detail::throwOnBadStatus(status);
 
     return fromNativeArray<uint32_t>(dims, sz);
-    ;
 }
 
 uint8_t NodeClient::getAccessLevel() {

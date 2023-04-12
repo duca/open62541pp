@@ -1,6 +1,4 @@
 #include "open62541pp/types/ApplicationDescription.h"
-
-#include "open62541pp/ErrorHandling.h"
 #include "open62541pp/TypeConverter.h"
 #include "open62541pp/Helper.h"
 
