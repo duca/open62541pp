@@ -97,20 +97,22 @@ endif()
 # open62541pp library (static/shared depending on option BUILD_SHARED_LIBS)
 add_library(
         open62541pp
-        src/Helper.cpp
-        src/Node.cpp
-        src/Server.cpp
         src/types/ApplicationDescription.cpp
         src/types/Builtin.cpp
         src/types/DataValue.cpp
         src/types/DateTime.cpp
+        src/types/MonitoredItem.cpp
         src/types/NodeId.cpp
         src/types/Variant.cpp
-        src/Endpoint.cpp
-        src/Client.cpp
-        src/NodeClient.cpp
         src/Browser.cpp
+        src/Client.cpp
+        src/Endpoint.cpp
+        src/Helper.cpp
+        src/Node.cpp
+        src/NodeClient.cpp
         src/ReferenceDescription.cpp
+        src/Server.cpp
+        src/services/SubscriptionManager.cpp
 )
 add_library(open62541pp::open62541pp ALIAS open62541pp)
 target_include_directories(open62541pp INTERFACE
