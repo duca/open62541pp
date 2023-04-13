@@ -13,11 +13,22 @@
 namespace opcua {
 
 struct Subscription {
+    ~Subscription() = default;
+    Subscription() = default;
+    Subscription(Subscription&&) = default;
+    Subscription& operator=(Subscription&&) = default;
+    Subscription(const Subscription&) = default;
+    Subscription& operator=(const Subscription&) = default;
+
+
     uint32_t subscriptionId;
-    std::unordered_map<NodeId, std::unordered_map<NodeId, std::shared_ptr<MonitoredItem>>>
+    std::unordered_map<uint32_t, std::unordered_map<uint32_t, std::shared_ptr<MonitoredItem>>>
         m_nodeHandleToItemMapping;  // Handle -> Attribute -> MonitoredItem
-    std::unordered_map<NodeId, std::shared_ptr<MonitoredItem>>
+    std::unordered_map<uint32_t, std::shared_ptr<MonitoredItem>>
         m_itemIdToItemMapping;  // ItemId -> Item for fast lookup on data change
+    double revisedPublishingInterval;
+    double revisedLifetimeCount;
+    double revisedMaxKeepAliveInterval;
 };
 
 }  // namespace opcua
